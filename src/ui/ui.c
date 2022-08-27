@@ -12,6 +12,7 @@ lv_obj_t * ui_Image1;
 lv_obj_t * ui_Image2;
 lv_obj_t * ui_bootspinner;
 lv_obj_t * ui_bootlabel;
+lv_obj_t * ui_Home;
 lv_obj_t * ui_MainMenu;
 lv_obj_t * ui_Roller1;
 
@@ -30,7 +31,7 @@ static void ui_event_Boot(lv_event_t * e)
 {
     lv_event_code_t event = lv_event_get_code(e);
     lv_obj_t * ta = lv_event_get_target(e);
-    if(event == LV_EVENT_SCREEN_LOADED) {
+    if(event == LV_EVENT_PRESSED) {
         _ui_screen_change(ui_MainMenu, LV_SCR_LOAD_ANIM_FADE_ON, 500, 2500);
     }
 }
@@ -114,6 +115,16 @@ void ui_Boot_screen_init(void)
     lv_label_set_text(ui_bootlabel, "Connecting...");
 
 }
+void ui_Home_screen_init(void)
+{
+
+    // ui_Home
+
+    ui_Home = lv_obj_create(NULL);
+
+    lv_obj_clear_flag(ui_Home, LV_OBJ_FLAG_SCROLLABLE);
+
+}
 void ui_MainMenu_screen_init(void)
 {
 
@@ -126,7 +137,7 @@ void ui_MainMenu_screen_init(void)
     // ui_Roller1
 
     ui_Roller1 = lv_roller_create(ui_MainMenu);
-    lv_roller_set_options(ui_Roller1, "Option 1\nOption 2\nOption 3", LV_ROLLER_MODE_NORMAL);
+    lv_roller_set_options(ui_Roller1, "Telescope control\nSettings\n", LV_ROLLER_MODE_NORMAL);
 
     lv_obj_set_width(ui_Roller1, 200);
     lv_obj_set_height(ui_Roller1, 200);
@@ -149,6 +160,7 @@ void ui_init(void)
                                                true, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
     ui_Boot_screen_init();
+    ui_Home_screen_init();
     ui_MainMenu_screen_init();
     lv_disp_load_scr(ui_Boot);
 }

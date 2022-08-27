@@ -21,6 +21,7 @@ extern lv_obj_t * ui_Image1;
 extern lv_obj_t * ui_Image2;
 extern lv_obj_t * ui_bootspinner;
 extern lv_obj_t * ui_bootlabel;
+extern lv_obj_t * ui_Home;
 extern lv_obj_t * ui_MainMenu;
 extern lv_obj_t * ui_Roller1;
 
