@@ -33,9 +33,8 @@ List the ready features here:
 - (more and different screens should theoretically be possible in the future?)
 - A nice graphical UI built with LVGL
 - Fully compatible with OnStep 4.x and X, loosely based on the original SHC code.
-- Running on an ESP32-C3-12F (Might change to ESP32S3 later on)
+- Running on an ESP32-C3-12F (Might change to ESP32S3 later on, for classic bluetooth connection)
 - 7 buttons utilizing just 4 I/O pins through WaynePlexing. (programming boot mode is done via the home button)
-- 
 
 ## Project Status
 Project is: _in progress and non-functional as of yet_!
