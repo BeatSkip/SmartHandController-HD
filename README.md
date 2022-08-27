@@ -54,8 +54,8 @@ Project is: _in progress and non-functional as of yet_!
 ## Photos
 The initial prototype looks like this.
 <!--![Example screenshot](img\prototype-front.jpg) -->
-<img src="img\prototype-screen.jpg" alt="drawing" height="500"/>
-<img src="img\prototype-iso.jpg" alt="drawing" height="500"/>
+<img src="img\prototype-screen.jpg" alt="drawing" height="500" width="500"/>
+<img src="img\prototype-iso.jpg" alt="drawing" height="500" width="500"/>
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
