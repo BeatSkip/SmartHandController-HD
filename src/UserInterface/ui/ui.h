@@ -24,7 +24,9 @@ extern lv_obj_t * ui_bootlabel;
 extern lv_obj_t * ui_Home;
 extern lv_obj_t * ui_MainMenu;
 extern lv_obj_t * ui_Roller1;
+extern lv_obj_t * ui_Screen1;
 
+extern void lvgl_ui_bootscreen_loaded(lv_event_t * e);
 
 LV_IMG_DECLARE(ui_img_664584034);    // assets\HD-SHC-Boot.png
 LV_IMG_DECLARE(ui_img_1203702338);    // assets\boot-logo.png

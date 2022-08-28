@@ -1,0 +1,9 @@
+
+static void ui_event_Boot(lv_event_t * e)
+{
+    lv_event_code_t event = lv_event_get_code(e);
+    lv_obj_t * ta = lv_event_get_target(e);
+    if(event == LV_EVENT_SCREEN_LOADED) {
+        lvgl_ui_bootscreen_loaded(e);
+    }
+}

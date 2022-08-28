@@ -67,7 +67,7 @@ But i have to stress! this project is not functional yet!
 ## Acknowledgements
 This project would be impossible without:
 - The great work over at [OnStep](https://onstep.groups.io/g/main/wiki) and their [github](https://github.com/hjd1964/OnStep)
-- Principle and code partially based off of [SmartHandController](https://github.com/hjd1964/SmartHandController)
+- Principle and code based off of [SmartHandController](https://github.com/hjd1964/SmartHandController)
 - UI is made with [LVGL](https://github.com/lvgl/lvgl)
 
 

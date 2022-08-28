@@ -26,6 +26,7 @@ class WaynePlexer {
     unsigned char getState(void);
   public:
     // Setup pin LED and call init()
+    WaynePlexer();
     void begin(byte pina, byte pinb, byte pinc, byte pind, int interval);
     void ReleasedHandler(unsigned char state);
     void PressedHandler(unsigned char state);
@@ -44,4 +45,6 @@ class WaynePlexer {
     // Power off the LED
     void off();
 };
+
+extern WaynePlexer keyPad;
 #endif

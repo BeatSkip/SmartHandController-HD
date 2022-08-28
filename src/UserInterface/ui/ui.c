@@ -15,6 +15,7 @@ lv_obj_t * ui_bootlabel;
 lv_obj_t * ui_Home;
 lv_obj_t * ui_MainMenu;
 lv_obj_t * ui_Roller1;
+lv_obj_t * ui_Screen1;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
 #if LV_COLOR_DEPTH != 16
@@ -31,8 +32,8 @@ static void ui_event_Boot(lv_event_t * e)
 {
     lv_event_code_t event = lv_event_get_code(e);
     lv_obj_t * ta = lv_event_get_target(e);
-    if(event == LV_EVENT_PRESSED) {
-        _ui_screen_change(ui_MainMenu, LV_SCR_LOAD_ANIM_FADE_ON, 500, 2500);
+    if(event == LV_EVENT_SCREEN_LOADED) {
+        lvgl_ui_bootscreen_loaded(e);
     }
 }
 
@@ -152,6 +153,16 @@ void ui_MainMenu_screen_init(void)
     lv_obj_set_style_radius(ui_Roller1, 10, LV_PART_SELECTED | LV_STATE_DEFAULT);
 
 }
+void ui_Screen1_screen_init(void)
+{
+
+    // ui_Screen1
+
+    ui_Screen1 = lv_obj_create(NULL);
+
+    lv_obj_clear_flag(ui_Screen1, LV_OBJ_FLAG_SCROLLABLE);
+
+}
 
 void ui_init(void)
 {
@@ -162,6 +173,7 @@ void ui_init(void)
     ui_Boot_screen_init();
     ui_Home_screen_init();
     ui_MainMenu_screen_init();
+    ui_Screen1_screen_init();
     lv_disp_load_scr(ui_Boot);
 }
 

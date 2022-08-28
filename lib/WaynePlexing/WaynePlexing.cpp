@@ -1,7 +1,12 @@
 #include "WaynePlexing.h"
 
 //WaynePlexer *waynePointer; // declare a pointer to testLib class
+WaynePlexer keyPad;
 
+WaynePlexer::WaynePlexer()
+{
+   
+}
 void WaynePlexer::begin(byte pina, byte pinb, byte pinc, byte pind, int interval){
   this->pinQ1 = pina;
   this->pinQ2 = pinb;
