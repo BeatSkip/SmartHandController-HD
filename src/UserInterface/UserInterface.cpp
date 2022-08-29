@@ -11,6 +11,7 @@ void updateWrapper() { userInterface.Run(); }
 void keyPadWrapper() { keyPad.Run(); }
 
 
+
 void UI::Init(const char version[], const int SerialBaud) {
   serialBaud = SerialBaud;
   // get guide commands ready, use single byte for SerialST4 or normal LX200 otherwise
@@ -75,7 +76,7 @@ void UI::Init(const char version[], const int SerialBaud) {
   
     ui_init();
   
-    Serial.println("Setup done");
+    lv_label_set_text(ui_bootlabel, "boot done");
   }
   
   if (tasks.add(5, 0, true, 6, updateWrapper, "UIupd")) { VLF("success"); } else { VLF("FAILED!"); }
@@ -92,9 +93,78 @@ void UI::Run() {
 
 
 void UI::Connect() {
-  //start Wifi 
+  char s[20] = "";
+  int thisTry = 0;
+  bool connectSuccess;
 
-  
+initAgain:
+
+  lv_label_set_text(ui_bootlabel, "setting up wifi..");
+  tasks.yield(2000);
+
+  #if SERIAL_IP_MODE == STATION
+    //if (firstConnect) menuWifi();
+  #endif
+
+queryAgain:
+  if (thisTry % 1 == 0) lv_label_set_text(ui_bootlabel, "finding onstep.."); else lv_label_set_text(ui_bootlabel, "......");
+
+  for (int i = 0; i < 3; i++) {
+    SERIAL_ONSTEP.print(":#");
+    tasks.yield(400);
+    SERIAL_ONSTEP.flush();
+    tasks.yield(100);
+  }
+
+  CMD_RESULT r = onStep.Get(":GVP#", s);
+  if (r != CR_VALUE_GET || !strstr(s, "On-Step")) {
+    if (++thisTry % 5 != 0) {
+      goto queryAgain;
+    } else {
+      SERIAL_ONSTEP.end();
+      
+      tasks.yield(7000);
+      thisTry = 0;
+      goto initAgain;
+    }
+  }
+
+  VLF("MSG: Connect, found OnStep");
+
+again2:
+  tasks.yield(1000);
+
+  // OnStep coordinate mode for getting and setting RA/Dec
+  // 0 = OBSERVED_PLACE (same as not supported)
+  // 1 = TOPOCENTRIC (does refraction)
+  // 2 = ASTROMETRIC_J2000 (does refraction and precession/nutation)
+  thisTry = 0;
+  if (onStep.Get(":GXEE#", s) == CR_VALUE_GET && s[0] >= '0' && s[0] <= '3' && s[1] == 0) {
+    if (s[0] == '0') {
+      telescopeCoordinates = OBSERVED_PLACE; 
+      lv_label_set_text(ui_bootlabel, "Connection OK!");
+      status.connected = true;
+    } else 
+    if (s[0] == '1') {
+      telescopeCoordinates = TOPOCENTRIC; 
+      lv_label_set_text(ui_bootlabel, "Connection OK!");
+      status.connected = true;
+    } else 
+    if (s[0] == '2') {
+      telescopeCoordinates = ASTROMETRIC_J2000;
+      lv_label_set_text(ui_bootlabel, "Connection OK!");
+      status.connected = true;
+    }
+  } else {
+    if (++thisTry <= 3) goto again2;
+    telescopeCoordinates = OBSERVED_PLACE;
+    lv_label_set_text(ui_bootlabel, "Connection Error!!");
+  }
+
+  // check to see if we have auxiliary features
+  hasAuxFeatures = status.featureScan();
+
+  status.connected = true;
 }
 
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p)
@@ -148,6 +218,8 @@ static void keyboard_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
   if(ispressed) data->state = LV_INDEV_STATE_PR;
   else data->state = LV_INDEV_STATE_REL;
 
+  #ifdef BTSK_LOG_KEYS
+
   if(ispressed && !lastkey){
     Serial.print("pressed ");
     switch (key)
@@ -185,6 +257,7 @@ static void keyboard_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
     break;
   }
   }
+  #endif
 
   lastkey = ispressed;
 

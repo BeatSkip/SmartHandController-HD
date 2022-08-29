@@ -24,7 +24,7 @@ void ReleasedCallback(unsigned char data){
 
 
 void lvgl_ui_bootscreen_loaded(lv_event_t * e){
-  userInterface.Connect();
+  //userInterface.Connect();
 }
 
 void setup() {

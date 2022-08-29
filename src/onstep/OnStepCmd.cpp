@@ -6,6 +6,7 @@
 //#include "../../lib/tasks/OnTask.h"
 #include "../catalogs/Catalog.h"
 #include "../userInterface/UserInterface.h"
+#include <OnTask.h>
 #include "OnStepCmd.h"
 
 bool OnStepCmd::isOk(CMD_RESULT val) {
@@ -436,8 +437,8 @@ bool OnStepCmd::processCommand(char* command, char* response, unsigned long time
           b = SERIAL_ONSTEP.read();
           response[responsePos] = b; responsePos++; if (responsePos > 19) responsePos = 19; response[responsePos] = 0;
         }
-        //Y;
-        userInterface.Run();
+        Y;
+        
       }
       return (response[0] != 0);
     }
