@@ -11,7 +11,7 @@
 #include "../Constants.h"
 #include "../status/Status.h"
 #include "../onstep/OnStepCmd.h"
-#include <ArduinoNvs.h>
+
 
 
 // coordinate mode for getting and setting RA/Dec

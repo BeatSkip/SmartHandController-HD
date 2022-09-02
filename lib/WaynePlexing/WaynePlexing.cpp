@@ -13,7 +13,7 @@ void WaynePlexer::begin(byte pina, byte pinb, byte pinc, byte pind, int interval
   this->pinQ3 = pinc;
   this->pinQ4 = pind;
   this->interval = interval * 1000;
-  pinMode(this->pinQ4, INPUT);
+  pinMode(this->pinQ4, INPUT_PULLUP);
   pinMode(this->pinQ1, INPUT_PULLUP);
   pinMode(this->pinQ2, INPUT_PULLUP);
   pinMode(this->pinQ3, INPUT_PULLUP); 
