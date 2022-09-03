@@ -1,0 +1,6 @@
+Dumbbell Nebula
+NGC 6853
+vul
+19.9934167
+22.721138
+8.0 

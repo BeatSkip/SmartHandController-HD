@@ -1,0 +1,3 @@
+[submodule "lib/skycatalog"]
+	path = lib/skycatalog
+	url = https://github.com/BeatSkip/skycatalog-ESP32

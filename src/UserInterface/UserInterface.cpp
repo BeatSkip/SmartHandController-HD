@@ -167,6 +167,9 @@ void UI::Connect() {
 //  status.connected = true;
 }
 
+/*
+DISPLAY FLUSH FUNCTION
+*/
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p)
 {
    uint32_t w = (area->x2 - area->x1 + 1);
@@ -180,6 +183,10 @@ void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color
 
    lv_disp_flush_ready(disp);
 }
+
+/*
+KEYBOARD DRIVER GLUE CODE
+*/
 
 static void keyboard_read(lv_indev_drv_t * drv, lv_indev_data_t*data){
   static bool lastkey;

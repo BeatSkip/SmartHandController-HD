@@ -1,0 +1,6 @@
+Siamese Twin (with NGC 4568)
+NGC 4567
+vir
+12.6091111
+11.258611
+12.07 

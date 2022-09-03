@@ -1,0 +1,6 @@
+Sunflower Galaxy
+NGC 5055
+cvn
+13.2636944
+42.035000
+9.57 

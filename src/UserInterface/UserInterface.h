@@ -42,6 +42,7 @@ typedef struct DisplaySettings {
 } DisplaySettings;
 
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p);
+void lv_fs_if_init(void);
 static void keyboard_read(lv_indev_drv_t * drv, lv_indev_data_t*data);
 
 class UI {
@@ -141,5 +142,7 @@ private:
   long nexttime;
 
 };
+
+
 
 extern UI userInterface;

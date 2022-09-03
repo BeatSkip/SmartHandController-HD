@@ -1,16 +1,24 @@
 #pragma once
 
-#define  Q1  12 // D2
-#define  Q2  14  // D3
-#define  Q3  2  // D4
+#define	Q1	27
+#define	Q2	26
+#define	Q3	25
+
 #define  Q4  0  // D4
 
 #define TFT_CS 22 // GFX_NOT_DEFINED for display without CS pin
 #define TFT_DC 16
-#define TFT_RST 15
+#define TFT_RST 32
 #define TFT_SCK 18
 #define TFT_MOSI 23
 #define TFT_SPI VSPI
+
+#define SD_CLK 14
+#define SD_CMD 15
+#define SD_D0   2
+#define SD_D1   4
+#define SD_D2  12
+#define SD_D3  13
 
 
 #define KEY_LEFT     1
