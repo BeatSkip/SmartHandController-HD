@@ -1,6 +1,0 @@
-Cat's Eye Nebula
-NGC 6543
-dra
-17.9759267
-66.626474
-8.8P

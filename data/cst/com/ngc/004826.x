@@ -1,6 +1,0 @@
-Black Eye Galaxy
-NGC 4826
-com
-12.9456389
-21.684722
-9.08 
